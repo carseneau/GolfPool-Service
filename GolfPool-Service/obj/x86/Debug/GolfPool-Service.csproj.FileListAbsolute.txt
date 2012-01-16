@@ -1,0 +1,5 @@
+C:\Users\craig\Documents\Visual Studio 2010\Projects\GolfPool-Service\GolfPool-Service\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\craig\Documents\Visual Studio 2010\Projects\GolfPool-Service\GolfPool-Service\obj\x86\Debug\GolfPool_Service.Form1.resources
+C:\Users\craig\Documents\Visual Studio 2010\Projects\GolfPool-Service\GolfPool-Service\obj\x86\Debug\GolfPool_Service.Properties.Resources.resources
+C:\Users\craig\Documents\Visual Studio 2010\Projects\GolfPool-Service\GolfPool-Service\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\craig\Documents\Visual Studio 2010\Projects\GolfPool-Service\GolfPool-Service\obj\x86\Debug\GenerateResource.write.1.tlog
