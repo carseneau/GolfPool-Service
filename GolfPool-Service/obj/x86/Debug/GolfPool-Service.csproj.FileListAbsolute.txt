@@ -1,0 +1,1 @@
+C:\Projects\GolfPool-Service\GolfPool-Service\GolfPool-Service\bin\Debug\GolfPool-Service.exe.config
