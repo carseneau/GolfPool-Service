@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using OpenQA.Selenium;
-namespace GolfPool
+namespace GolfPool_Service
 {
     public class Tournament
     {
         IWebDriver driver;
+        bool hasTournamentBeenPlayed;
         string tournamentPageURL;
         string tournamentBasePageURL;
         int moneyIndexOnPage;
@@ -14,8 +15,25 @@ namespace GolfPool
         OpenQA.Selenium.Firefox.FirefoxBinary binary;
         OpenQA.Selenium.Firefox.FirefoxProfile profile;
         List<string> tournamentList;
+        public Tournament()
+        {
+            try
+            {
+                binary = new OpenQA.Selenium.Firefox.FirefoxBinary();
+                profile = new OpenQA.Selenium.Firefox.FirefoxProfile();
+                tournamentResultsTable = new DataTable("tournamentresults");
+                tournamentResultsTable.Columns.Add("TournamentEndDate", typeof(string));
+                tournamentResultsTable.Columns.Add("TournamentName", typeof(string));
+                tournamentResultsTable.Columns.Add("Golfer", typeof(string));
+                tournamentResultsTable.Columns.Add("Prize", typeof(string));
 
-        public Tournament(string tournamentURL,string firefoxPath,string firefoxProfilePath)
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public Tournament(string firefoxPath,string firefoxProfilePath)
         {
             try
             {
@@ -26,11 +44,23 @@ namespace GolfPool
                 tournamentResultsTable.Columns.Add("TournamentName", typeof(string));
                 tournamentResultsTable.Columns.Add("Golfer", typeof(string));
                 tournamentResultsTable.Columns.Add("Prize", typeof(string));
-                tournamentPageURL = tournamentURL;
+                
             }
             catch (Exception ex)
             {
 
+            }
+        }
+        public bool setTournamentPageURL(string url)
+        {
+            try
+            {
+                tournamentPageURL = url;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
         public bool loadTournamentPage()
@@ -140,6 +170,20 @@ namespace GolfPool
                 return true;
             }
             catch(Exception ex)
+            {
+                return false;
+            }
+        }
+        public bool setHasTournamentBeenPlayed()
+        {
+            try
+            {
+                
+                loadTournamentPage();
+                int end = driver.FindElement(By.Id("tourSubT1Generic")).Text.IndexOf("Ending");
+                return true;
+            }
+            catch (Exception ex)
             {
                 return false;
             }
