@@ -1,6 +1,6 @@
 ﻿namespace GolfPool_Service
 {
-    partial class Service1
+    partial class GolfPoolScraper
     {
         /// <summary> 
         /// Required designer variable.

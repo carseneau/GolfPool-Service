@@ -9,9 +9,9 @@ using System.Text;
 
 namespace GolfPool_Service
 {
-    public partial class Service1 : ServiceBase
+    public partial class GolfPoolScraper : ServiceBase
     {
-        public Service1()
+        public GolfPoolScraper()
         {
             InitializeComponent();
         }
