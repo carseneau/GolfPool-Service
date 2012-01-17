@@ -36,7 +36,7 @@ namespace GolfPool_Service
             int moneyIndex = driver.FindElements(By.ClassName("tourTournTblHead"))[2].FindElements(By.TagName("td")).Count + 4;
             DataTable dt = new DataTable();
             dt.Columns.Add("GolferName", typeof(string));
-            dt.Columns.Add("Winnings", typeof(string));
+            dt.Columns.Add("Winnings", typeof(decimal));
            
               
             foreach (IWebElement f in driver.FindElements(By.ClassName("tourTableData")))
@@ -47,7 +47,8 @@ namespace GolfPool_Service
                 {
                     dt.Rows.Add(f.FindElements(By.TagName("td"))[0].Text, helper.ReplaceMoneyString(f.FindElements(By.TagName("td"))[moneyIndex - 1].Text));
                 }
-                return dt; 
+                dt.DefaultView.Sort = "Winnings DESC";    
+            return dt; 
           
         }
         public System.DateTime getTournamentEndDate()

@@ -46,7 +46,7 @@ namespace GolfPool_Service
             TournamentScraper ts = new TournamentScraper();
             ts.setTournamentURL((string)((DataRowView)comboBox1.SelectedItem).Row["TournamentLink"]);
             resultsGridView.DataSource = ts.getTournamentResults();
-            resultsGridView.Sort(resultsGridView.Columns["Winnings"],
+          
             resultsGridView.Refresh();
             
             ts.closeDriver();

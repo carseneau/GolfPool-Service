@@ -7,11 +7,12 @@ namespace GolfPool_Service
 {
     class Helper
     {
-        public string ReplaceMoneyString(string inputString)
+        public decimal ReplaceMoneyString(string inputString)
         {
-            string outputString;
-            outputString = inputString.Replace("$", "").Replace(",", "");
-            return outputString;
+            
+            decimal outDec;
+            decimal.TryParse(inputString.Replace("$", "").Replace(",", ""),out outDec);
+                    return outDec;
         }
     }
 }
