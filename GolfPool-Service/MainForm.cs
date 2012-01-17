@@ -11,26 +11,24 @@ namespace GolfPool_Service
 {
     public partial class MainForm : Form 
     {
-        ErrorHandling e = new ErrorHandling();
-        GolfDriver d;
-        Tournament t = new Tournament();
-        TournamentScraper ts = new TournamentScraper();
+
+        DataTable listDS;
         public MainForm()
         {
             
             InitializeComponent();
-            t.setTournamentURL("http://www.pgatour.com/tournaments/r016/results.html");
-          ts.loadTournamentPage(t.tournamentURL,ts.getMoneyIndex(d.driver),t.tournamentURL)));
-            ts.getTournamentResults(d.driver
+          
         }
 
         private void btnGetTournamentList_Click(object sender, EventArgs e)
         {
-            d = new GolfDriver();
-            d.createDriver();
+            
             TournamentScraper ts = new TournamentScraper();
-            comboBox1.DataSource = ts.getListOfTournaments(d.driver);
+            listDS = ts.getListOfTournaments();
+            comboBox1.DataSource = listDS;
+            comboBox1.DisplayMember = "TournamentName";
             comboBox1.Refresh();
+            ts.closeDriver();
         }
 
         private void errorGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -41,6 +39,17 @@ namespace GolfPool_Service
         private void tournamentScrapingErrorGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnScrapeTournament_Click(object sender, EventArgs e)
+        {
+            TournamentScraper ts = new TournamentScraper();
+            ts.setTournamentURL((string)((DataRowView)comboBox1.SelectedItem).Row["TournamentLink"]);
+            resultsGridView.DataSource = ts.getTournamentResults();
+            resultsGridView.Sort(resultsGridView.Columns["Winnings"],
+            resultsGridView.Refresh();
+            
+            ts.closeDriver();
         }
 
 
