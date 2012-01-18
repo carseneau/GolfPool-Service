@@ -664,7 +664,7 @@ namespace GolfPool_Service
             picks.Rows.Add("Don Mooney", "Steve Stricker");
             picks.Rows.Add("Don Mooney", "Tiger Woods");
             picks.Rows.Add("Don Mooney", "Tom Pernice Jr.");
-            picks.Rows.Add("Don Mooney", "");
+            picks.Rows.Add("Don Mooney", "Luke Donald");
             picks.Rows.Add("Ejaz Asgarali", "Adam Scott");
             picks.Rows.Add("Ejaz Asgarali", "Anthony Kim");
             picks.Rows.Add("Ejaz Asgarali", "Camilo Villegas");
