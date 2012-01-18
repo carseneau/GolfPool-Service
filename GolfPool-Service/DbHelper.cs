@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace GolfPool_Service
 {
@@ -19,10 +20,15 @@ namespace GolfPool_Service
 
         public void createDBSchema()
         {
-        cmd.CommandText
-        }
-
         
+            StreamReader sr = new StreamReader("CreateDatabase.sql");
+            cmd.CommandText = sr.ReadToEnd();
+            sr.Close();
+            cmd.Connection = conn;
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
         public void saveEntrantPicks()
         {
         
