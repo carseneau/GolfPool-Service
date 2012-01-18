@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GolfPool-Service", "GolfPool-Service\GolfPool-Service.csproj", "{CD1C2F62-CAC8-4200-B071-5AF9E0152D43}"
 EndProject
 Global
