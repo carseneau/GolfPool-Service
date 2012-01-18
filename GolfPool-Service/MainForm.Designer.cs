@@ -68,6 +68,7 @@
             // 
             // resultsGridView
             // 
+            this.resultsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.resultsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.resultsGridView.Location = new System.Drawing.Point(12, 41);
             this.resultsGridView.Name = "resultsGridView";
