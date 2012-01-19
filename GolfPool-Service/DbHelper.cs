@@ -20,9 +20,8 @@ namespace GolfPool_Service
 
         public void createDBSchema()
         {
-        
             StreamReader sr = new StreamReader("CreateDatabase.sql");
-            cmd.CommandText = sr.ReadToEnd();
+            cmd = new SqlCommand(sr.ReadToEnd());
             sr.Close();
             cmd.Connection = conn;
             conn.Open();
