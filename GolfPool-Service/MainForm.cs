@@ -52,6 +52,32 @@ namespace GolfPool_Service
             ts.closeDriver();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            TournamentScraper ts = new TournamentScraper();
+            ts.InitialGolferAddToDB();
+            ts.closeDriver();
+        }
+
+        private void resultsGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            TournamentScraper ts = new TournamentScraper();
+            ts.InitialEntrantsAddToDB();
+            ts.closeDriver();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            TournamentScraper ts = new TournamentScraper();
+            ts.InitialPicksAddToDB();
+            ts.closeDriver();
+        }
+
 
        
     }

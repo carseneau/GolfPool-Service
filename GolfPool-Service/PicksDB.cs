@@ -10,7 +10,7 @@ namespace GolfPool_Service
 
         DataTable picks;
 
-        PicksDB()
+        public PicksDB()
         {
             picks = new DataTable("Picks");
             picks.Columns.Add("Entrant");

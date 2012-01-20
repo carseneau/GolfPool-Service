@@ -13,7 +13,7 @@ namespace GolfPool_Service
         SqlConnection conn;
         SqlCommand cmd;
         
-        DbHelper()
+        public DbHelper()
         {
             conn = new SqlConnection("Server=12a5e980-74a4-4c94-a480-9fd70124ef10.sqlserver.sequelizer.com;Database=db12a5e98074a44c94a4809fd70124ef10;User ID=dsscpeteldbsyyzj;Password=4SXf82Dtu5m6YCGKykANoz4SuZqo53EBjr2rLHdpnwTQ7Wt8HztVDphBWeThKpxA;");
         }
@@ -28,28 +28,67 @@ namespace GolfPool_Service
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public void saveEntrantPicks()
+        public int saveEntrant(string entrantname)
         {
-        
-        }
+            {
+                cmd = new SqlCommand("addentrant", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@entrantid", 0)).Direction = System.Data.ParameterDirection.Output;
+                cmd.Parameters.Add(new SqlParameter("@entrantname", entrantname));
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                int id;
+                int.TryParse(cmd.Parameters["@entrantid"].Value.ToString(), out id);
+                
+                return id;
 
+
+            }
+        }
         public void saveTournamentResults()
         {
 
         }
-
         public void getSavedTournamentResults()
         {
         }
-
         public void getPoolStandings()
         {
         }
-
         public void getEntrantPicks()
         {
         }
+        public int saveGolfer(string golfername)
+        {
+            cmd = new SqlCommand("addgolfer", conn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@golferid", 0)).Direction = System.Data.ParameterDirection.Output;
+            cmd.Parameters.Add(new SqlParameter("@golfername", golfername));
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            int id;
+            int.TryParse(cmd.Parameters["@golferid"].Value.ToString(), out id);
+            return id;
+            
+        }
+        public int savePicks(string entrantname, string golfername)
+        {
+            cmd = new SqlCommand("addpick", conn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@pickid", 0)).Direction = System.Data.ParameterDirection.Output;
+            cmd.Parameters.Add(new SqlParameter("@entrantname", entrantname));
+            cmd.Parameters.Add(new SqlParameter("@golfername", golfername));
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            int id;
 
+
+            int.TryParse(cmd.Parameters["@pickid"].Value.ToString(), out id);
+            return id;
+        }
 
     }
 }
