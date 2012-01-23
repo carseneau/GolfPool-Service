@@ -48,3 +48,6 @@ C:\Projects\GolfPool-Service\GolfPool-Service\GolfPool-Service\obj\x86\Debug\Gol
 C:\Projects\GolfPool-Service\GolfPool-Service\GolfPool-Service\obj\x86\Debug\GolfPool_Service.Properties.Resources.resources
 C:\Projects\GolfPool-Service\GolfPool-Service\GolfPool-Service\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Projects\GolfPool-Service\GolfPool-Service\GolfPool-Service\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Projects\Personal\GolfPool-Service\GolfPool-Service\GolfPool-Service\bin\Debug\GolfPool-Service.exe.config
+C:\Projects\Personal\GolfPool-Service\GolfPool-Service\GolfPool-Service\obj\x86\Debug\GolfPool-Service.exe
+C:\Projects\Personal\GolfPool-Service\GolfPool-Service\GolfPool-Service\obj\x86\Debug\GolfPool-Service.pdb

@@ -15,7 +15,10 @@ namespace GolfPool_Service
         
         public DbHelper()
         {
-            conn = new SqlConnection("Server=12a5e980-74a4-4c94-a480-9fd70124ef10.sqlserver.sequelizer.com;Database=db12a5e98074a44c94a4809fd70124ef10;User ID=dsscpeteldbsyyzj;Password=4SXf82Dtu5m6YCGKykANoz4SuZqo53EBjr2rLHdpnwTQ7Wt8HztVDphBWeThKpxA;");
+            //test
+            conn = new SqlConnection("Server=594ea4c6-13a1-406c-be35-9fe101718407.sqlserver.sequelizer.com;Database=db594ea4c613a1406cbe359fe101718407;User ID=cemngwmtwcpigkas;Password=NB2utvBLoWanK5YoUNbyAiFr33k5stYWMah4ijRQQZszZqj6ovFHxKrE5HzzkEt4;");
+            //live
+            //conn = new SqlConnection("Server=12a5e980-74a4-4c94-a480-9fd70124ef10.sqlserver.sequelizer.com;Database=db12a5e98074a44c94a4809fd70124ef10;User ID=dsscpeteldbsyyzj;Password=4SXf82Dtu5m6YCGKykANoz4SuZqo53EBjr2rLHdpnwTQ7Wt8HztVDphBWeThKpxA;");
         }
 
         public void createDBSchema()
