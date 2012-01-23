@@ -113,7 +113,11 @@ namespace GolfPool_Service
             PicksDB pdb = new PicksDB();
             foreach (DataRow p in pdb.getPicks().Rows)
             {
-                dbh.savePicks(p["entrant"].ToString(), p["golfer"].ToString());
+                if (dbh.savePicks(p["entrant"].ToString(), p["golfer"].ToString()) == 0)
+                {
+                    System.Console.WriteLine("Error");
+                }
+                    
             }
         }
     }

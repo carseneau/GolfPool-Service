@@ -48,7 +48,10 @@ namespace GolfPool_Service
         }
         public void saveTournamentResults()
         {
-
+            cmd = new SqlCommand("addwinnings", conn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("winningsid",0)).Direction = System.Data.ParameterDirection.Output;
+      
         }
         public void getSavedTournamentResults()
         {
@@ -84,8 +87,6 @@ namespace GolfPool_Service
             cmd.ExecuteNonQuery();
             conn.Close();
             int id;
-
-
             int.TryParse(cmd.Parameters["@pickid"].Value.ToString(), out id);
             return id;
         }
