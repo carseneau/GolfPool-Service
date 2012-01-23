@@ -588,7 +588,7 @@ namespace GolfPool_Service
             picks.Rows.Add("Mark Graham", "Rory McIlroy");
             picks.Rows.Add("Mark Graham", "Sean O'Hair");
             picks.Rows.Add("Mark Graham", "Steve Stricker");
-            picks.Rows.Add("Mark Graham", "Tim Clark");
+            picks.Rows.Add("Mark Graham", "Tiger Woods");
             picks.Rows.Add("Rick Thorpe", "Adam Scott");
             picks.Rows.Add("Rick Thorpe", "Graeme McDowell");
             picks.Rows.Add("Rick Thorpe", "Greg Chalmers");
