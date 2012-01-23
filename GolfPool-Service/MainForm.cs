@@ -99,7 +99,7 @@ namespace GolfPool_Service
         private void button2_Click(object sender, EventArgs e)
         {
             DbHelper dbh = new DbHelper();
-            dbh.saveTournamentResults(resultsGridView.DataSource);
+       //     dbh.saveTournamentResults(resultsGridView.DataSource);
 
         }
 
