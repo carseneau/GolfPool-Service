@@ -1,84 +1,88 @@
-/****** Object:  ForeignKey [FK_winnings_golfers]    Script Date: 01/17/2012 23:21:26 ******/
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_winnings_golfers]') AND parent_object_id = OBJECT_ID(N'[dbo].[winnings]'))
-ALTER TABLE [dbo].[winnings] DROP CONSTRAINT [FK_winnings_golfers]
+/****** Object:  ForeignKey [FK_winnings_golfers]    Script Date: 01/18/2012 13:01:18 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_winnings_golfers]') AND parent_object_id = OBJECT_ID(N'[winnings]'))
+ALTER TABLE [winnings] DROP CONSTRAINT [FK_winnings_golfers]
 GO
-/****** Object:  ForeignKey [FK_winnings_tournaments]    Script Date: 01/17/2012 23:21:26 ******/
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_winnings_tournaments]') AND parent_object_id = OBJECT_ID(N'[dbo].[winnings]'))
-ALTER TABLE [dbo].[winnings] DROP CONSTRAINT [FK_winnings_tournaments]
+/****** Object:  ForeignKey [FK_winnings_tournaments]    Script Date: 01/18/2012 13:01:18 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_winnings_tournaments]') AND parent_object_id = OBJECT_ID(N'[winnings]'))
+ALTER TABLE [winnings] DROP CONSTRAINT [FK_winnings_tournaments]
 GO
-/****** Object:  ForeignKey [FK_picks_entrants]    Script Date: 01/17/2012 23:21:29 ******/
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_picks_entrants]') AND parent_object_id = OBJECT_ID(N'[dbo].[picks]'))
-ALTER TABLE [dbo].[picks] DROP CONSTRAINT [FK_picks_entrants]
+/****** Object:  ForeignKey [FK_picks_entrants]    Script Date: 01/18/2012 13:01:20 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_picks_entrants]') AND parent_object_id = OBJECT_ID(N'[picks]'))
+ALTER TABLE [picks] DROP CONSTRAINT [FK_picks_entrants]
 GO
-/****** Object:  ForeignKey [FK_picks_golfers]    Script Date: 01/17/2012 23:21:29 ******/
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_picks_golfers]') AND parent_object_id = OBJECT_ID(N'[dbo].[picks]'))
-ALTER TABLE [dbo].[picks] DROP CONSTRAINT [FK_picks_golfers]
+/****** Object:  ForeignKey [FK_picks_golfers]    Script Date: 01/18/2012 13:01:20 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_picks_golfers]') AND parent_object_id = OBJECT_ID(N'[picks]'))
+ALTER TABLE [picks] DROP CONSTRAINT [FK_picks_golfers]
 GO
-/****** Object:  Table [dbo].[picks]    Script Date: 01/17/2012 23:21:29 ******/
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_picks_entrants]') AND parent_object_id = OBJECT_ID(N'[dbo].[picks]'))
-ALTER TABLE [dbo].[picks] DROP CONSTRAINT [FK_picks_entrants]
+/****** Object:  StoredProcedure [dbo].[addgolfer]    Script Date: 01/18/2012 13:01:42 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[addgolfer]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [addgolfer]
 GO
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_picks_golfers]') AND parent_object_id = OBJECT_ID(N'[dbo].[picks]'))
-ALTER TABLE [dbo].[picks] DROP CONSTRAINT [FK_picks_golfers]
+/****** Object:  Table [dbo].[picks]    Script Date: 01/18/2012 13:01:20 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_picks_entrants]') AND parent_object_id = OBJECT_ID(N'[picks]'))
+ALTER TABLE [picks] DROP CONSTRAINT [FK_picks_entrants]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_picks_golfers]') AND parent_object_id = OBJECT_ID(N'[picks]'))
+ALTER TABLE [picks] DROP CONSTRAINT [FK_picks_golfers]
 GO
 IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_picks_inserttime]') AND type = 'D')
 BEGIN
-ALTER TABLE [dbo].[picks] DROP CONSTRAINT [DF_picks_inserttime]
+ALTER TABLE [picks] DROP CONSTRAINT [DF_picks_inserttime]
 END
 GO
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[picks]') AND type in (N'U'))
-DROP TABLE [dbo].[picks]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[picks]') AND type in (N'U'))
+DROP TABLE [picks]
 GO
-/****** Object:  Table [dbo].[winnings]    Script Date: 01/17/2012 23:21:26 ******/
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_winnings_golfers]') AND parent_object_id = OBJECT_ID(N'[dbo].[winnings]'))
-ALTER TABLE [dbo].[winnings] DROP CONSTRAINT [FK_winnings_golfers]
+/****** Object:  Table [dbo].[winnings]    Script Date: 01/18/2012 13:01:18 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_winnings_golfers]') AND parent_object_id = OBJECT_ID(N'[winnings]'))
+ALTER TABLE [winnings] DROP CONSTRAINT [FK_winnings_golfers]
 GO
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_winnings_tournaments]') AND parent_object_id = OBJECT_ID(N'[dbo].[winnings]'))
-ALTER TABLE [dbo].[winnings] DROP CONSTRAINT [FK_winnings_tournaments]
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_winnings_tournaments]') AND parent_object_id = OBJECT_ID(N'[winnings]'))
+ALTER TABLE [winnings] DROP CONSTRAINT [FK_winnings_tournaments]
 GO
 IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_winnings_inserttime]') AND type = 'D')
 BEGIN
-ALTER TABLE [dbo].[winnings] DROP CONSTRAINT [DF_winnings_inserttime]
+ALTER TABLE [winnings] DROP CONSTRAINT [DF_winnings_inserttime]
 END
 GO
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[winnings]') AND type in (N'U'))
-DROP TABLE [dbo].[winnings]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[winnings]') AND type in (N'U'))
+DROP TABLE [winnings]
 GO
-/****** Object:  Table [dbo].[tournaments]    Script Date: 01/17/2012 23:21:23 ******/
+/****** Object:  Table [dbo].[tournaments]    Script Date: 01/18/2012 13:01:16 ******/
 IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_tournaments_inserttime]') AND type = 'D')
 BEGIN
-ALTER TABLE [dbo].[tournaments] DROP CONSTRAINT [DF_tournaments_inserttime]
+ALTER TABLE [tournaments] DROP CONSTRAINT [DF_tournaments_inserttime]
 END
 GO
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tournaments]') AND type in (N'U'))
-DROP TABLE [dbo].[tournaments]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[tournaments]') AND type in (N'U'))
+DROP TABLE [tournaments]
 GO
-/****** Object:  Table [dbo].[entrants]    Script Date: 01/17/2012 23:21:21 ******/
+/****** Object:  Table [dbo].[entrants]    Script Date: 01/18/2012 13:01:13 ******/
 IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_entrants_inserttime]') AND type = 'D')
 BEGIN
-ALTER TABLE [dbo].[entrants] DROP CONSTRAINT [DF_entrants_inserttime]
+ALTER TABLE [entrants] DROP CONSTRAINT [DF_entrants_inserttime]
 END
 GO
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[entrants]') AND type in (N'U'))
-DROP TABLE [dbo].[entrants]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[entrants]') AND type in (N'U'))
+DROP TABLE [entrants]
 GO
-/****** Object:  Table [dbo].[golfers]    Script Date: 01/17/2012 23:21:18 ******/
+/****** Object:  Table [dbo].[golfers]    Script Date: 01/18/2012 13:01:11 ******/
 IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_golfers_inserttime]') AND type = 'D')
 BEGIN
-ALTER TABLE [dbo].[golfers] DROP CONSTRAINT [DF_golfers_inserttime]
+ALTER TABLE [golfers] DROP CONSTRAINT [DF_golfers_inserttime]
 END
 GO
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[golfers]') AND type in (N'U'))
-DROP TABLE [dbo].[golfers]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[golfers]') AND type in (N'U'))
+DROP TABLE [golfers]
 GO
-/****** Object:  Table [dbo].[golfers]    Script Date: 01/17/2012 23:21:18 ******/
+/****** Object:  Table [dbo].[golfers]    Script Date: 01/18/2012 13:01:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[golfers]') AND type in (N'U'))
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[golfers]') AND type in (N'U'))
 BEGIN
-CREATE TABLE [dbo].[golfers](
+CREATE TABLE [golfers](
 	[golferid] [int] IDENTITY(1,1) NOT NULL,
 	[golfername] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[lastchange] [datetime] NOT NULL,
@@ -90,14 +94,14 @@ CREATE TABLE [dbo].[golfers](
 ) ON [PRIMARY]
 END
 GO
-/****** Object:  Table [dbo].[entrants]    Script Date: 01/17/2012 23:21:21 ******/
+/****** Object:  Table [dbo].[entrants]    Script Date: 01/18/2012 13:01:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[entrants]') AND type in (N'U'))
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[entrants]') AND type in (N'U'))
 BEGIN
-CREATE TABLE [dbo].[entrants](
+CREATE TABLE [entrants](
 	[entrantid] [int] IDENTITY(1,1) NOT NULL,
 	[entrantname] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[entrantemail] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -110,14 +114,14 @@ CREATE TABLE [dbo].[entrants](
 ) ON [PRIMARY]
 END
 GO
-/****** Object:  Table [dbo].[tournaments]    Script Date: 01/17/2012 23:21:23 ******/
+/****** Object:  Table [dbo].[tournaments]    Script Date: 01/18/2012 13:01:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tournaments]') AND type in (N'U'))
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[tournaments]') AND type in (N'U'))
 BEGIN
-CREATE TABLE [dbo].[tournaments](
+CREATE TABLE [tournaments](
 	[tournamentid] [int] IDENTITY(1,1) NOT NULL,
 	[tournamentname] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[lastchange] [datetime] NOT NULL,
@@ -129,14 +133,14 @@ CREATE TABLE [dbo].[tournaments](
 ) ON [PRIMARY]
 END
 GO
-/****** Object:  Table [dbo].[winnings]    Script Date: 01/17/2012 23:21:26 ******/
+/****** Object:  Table [dbo].[winnings]    Script Date: 01/18/2012 13:01:18 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[winnings]') AND type in (N'U'))
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[winnings]') AND type in (N'U'))
 BEGIN
-CREATE TABLE [dbo].[winnings](
+CREATE TABLE [winnings](
 	[winningsid] [int] IDENTITY(1,1) NOT NULL,
 	[tournamentid] [int] NOT NULL,
 	[golferid] [int] NOT NULL,
@@ -150,14 +154,14 @@ CREATE TABLE [dbo].[winnings](
 ) ON [PRIMARY]
 END
 GO
-/****** Object:  Table [dbo].[picks]    Script Date: 01/17/2012 23:21:29 ******/
+/****** Object:  Table [dbo].[picks]    Script Date: 01/18/2012 13:01:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[picks]') AND type in (N'U'))
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[picks]') AND type in (N'U'))
 BEGIN
-CREATE TABLE [dbo].[picks](
+CREATE TABLE [picks](
 	[pickid] [int] IDENTITY(1,1) NOT NULL,
 	[entrantid] [int] NOT NULL,
 	[golferid] [int] NOT NULL,
@@ -170,35 +174,74 @@ CREATE TABLE [dbo].[picks](
 ) ON [PRIMARY]
 END
 GO
-/****** Object:  ForeignKey [FK_winnings_golfers]    Script Date: 01/17/2012 23:21:26 ******/
-IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_winnings_golfers]') AND parent_object_id = OBJECT_ID(N'[dbo].[winnings]'))
-ALTER TABLE [dbo].[winnings]  WITH CHECK ADD  CONSTRAINT [FK_winnings_golfers] FOREIGN KEY([winningsid])
-REFERENCES [dbo].[golfers] ([golferid])
+/****** Object:  StoredProcedure [dbo].[addgolfer]    Script Date: 01/18/2012 13:01:42 ******/
+SET ANSI_NULLS ON
 GO
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_winnings_golfers]') AND parent_object_id = OBJECT_ID(N'[dbo].[winnings]'))
-ALTER TABLE [dbo].[winnings] CHECK CONSTRAINT [FK_winnings_golfers]
+SET QUOTED_IDENTIFIER ON
 GO
-/****** Object:  ForeignKey [FK_winnings_tournaments]    Script Date: 01/17/2012 23:21:26 ******/
-IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_winnings_tournaments]') AND parent_object_id = OBJECT_ID(N'[dbo].[winnings]'))
-ALTER TABLE [dbo].[winnings]  WITH CHECK ADD  CONSTRAINT [FK_winnings_tournaments] FOREIGN KEY([tournamentid])
-REFERENCES [dbo].[tournaments] ([tournamentid])
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[addgolfer]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [addgolfer]
+	-- Add the parameters for the stored procedure here
+	@golferid int,
+	@golfername nvarchar(50)
+	
+	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	IF EXISTS (SELECT golferid FROM golfers WHERE golfername = @golfername)
+		BEGIN
+			UPDATE golfers SET golfername = @golfername, lastchange = GETDATE() WHERE golfername = @golfername
+			SELECT golferid FROM golfers WHERE golfername = @golfername
+		END
+	ELSE
+		BEGIN
+			INSERT INTO golfers (golfername, lastchange) VALUES (@golfername, GETDATE())
+			SELECT golferid FROM golfers WHERE golfername = @golfername
+		END
+END
+' 
+END
 GO
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_winnings_tournaments]') AND parent_object_id = OBJECT_ID(N'[dbo].[winnings]'))
-ALTER TABLE [dbo].[winnings] CHECK CONSTRAINT [FK_winnings_tournaments]
+/****** Object:  ForeignKey [FK_winnings_golfers]    Script Date: 01/18/2012 13:01:18 ******/
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_winnings_golfers]') AND parent_object_id = OBJECT_ID(N'[winnings]'))
+ALTER TABLE [winnings]  WITH CHECK ADD  CONSTRAINT [FK_winnings_golfers] FOREIGN KEY([winningsid])
+REFERENCES [golfers] ([golferid])
 GO
-/****** Object:  ForeignKey [FK_picks_entrants]    Script Date: 01/17/2012 23:21:29 ******/
-IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_picks_entrants]') AND parent_object_id = OBJECT_ID(N'[dbo].[picks]'))
-ALTER TABLE [dbo].[picks]  WITH CHECK ADD  CONSTRAINT [FK_picks_entrants] FOREIGN KEY([entrantid])
-REFERENCES [dbo].[entrants] ([entrantid])
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_winnings_golfers]') AND parent_object_id = OBJECT_ID(N'[winnings]'))
+ALTER TABLE [winnings] CHECK CONSTRAINT [FK_winnings_golfers]
 GO
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_picks_entrants]') AND parent_object_id = OBJECT_ID(N'[dbo].[picks]'))
-ALTER TABLE [dbo].[picks] CHECK CONSTRAINT [FK_picks_entrants]
+/****** Object:  ForeignKey [FK_winnings_tournaments]    Script Date: 01/18/2012 13:01:18 ******/
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_winnings_tournaments]') AND parent_object_id = OBJECT_ID(N'[winnings]'))
+ALTER TABLE [winnings]  WITH CHECK ADD  CONSTRAINT [FK_winnings_tournaments] FOREIGN KEY([tournamentid])
+REFERENCES [tournaments] ([tournamentid])
 GO
-/****** Object:  ForeignKey [FK_picks_golfers]    Script Date: 01/17/2012 23:21:29 ******/
-IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_picks_golfers]') AND parent_object_id = OBJECT_ID(N'[dbo].[picks]'))
-ALTER TABLE [dbo].[picks]  WITH CHECK ADD  CONSTRAINT [FK_picks_golfers] FOREIGN KEY([golferid])
-REFERENCES [dbo].[golfers] ([golferid])
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_winnings_tournaments]') AND parent_object_id = OBJECT_ID(N'[winnings]'))
+ALTER TABLE [winnings] CHECK CONSTRAINT [FK_winnings_tournaments]
 GO
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_picks_golfers]') AND parent_object_id = OBJECT_ID(N'[dbo].[picks]'))
-ALTER TABLE [dbo].[picks] CHECK CONSTRAINT [FK_picks_golfers]
+/****** Object:  ForeignKey [FK_picks_entrants]    Script Date: 01/18/2012 13:01:20 ******/
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_picks_entrants]') AND parent_object_id = OBJECT_ID(N'[picks]'))
+ALTER TABLE [picks]  WITH CHECK ADD  CONSTRAINT [FK_picks_entrants] FOREIGN KEY([entrantid])
+REFERENCES [entrants] ([entrantid])
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_picks_entrants]') AND parent_object_id = OBJECT_ID(N'[picks]'))
+ALTER TABLE [picks] CHECK CONSTRAINT [FK_picks_entrants]
+GO
+/****** Object:  ForeignKey [FK_picks_golfers]    Script Date: 01/18/2012 13:01:20 ******/
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_picks_golfers]') AND parent_object_id = OBJECT_ID(N'[picks]'))
+ALTER TABLE [picks]  WITH CHECK ADD  CONSTRAINT [FK_picks_golfers] FOREIGN KEY([golferid])
+REFERENCES [golfers] ([golferid])
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[FK_picks_golfers]') AND parent_object_id = OBJECT_ID(N'[picks]'))
+ALTER TABLE [picks] CHECK CONSTRAINT [FK_picks_golfers]
 GO

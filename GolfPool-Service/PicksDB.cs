@@ -8,13 +8,14 @@ namespace GolfPool_Service
     class PicksDB
     {
 
-        DataTable picks;
+       public DataTable picks;
 
-        PicksDB()
+        public PicksDB()
         {
             picks = new DataTable("Picks");
             picks.Columns.Add("Entrant");
             picks.Columns.Add("Golfer");
+
             picks.Rows.Add("Ryan Moore", "Adam Scott");
             picks.Rows.Add("Ryan Moore", "Anthony Kim");
             picks.Rows.Add("Ryan Moore", "Camilo Villegas");
@@ -275,16 +276,9 @@ namespace GolfPool_Service
             picks.Rows.Add("Matthew Gordon", "Rickie Fowler");
             picks.Rows.Add("Matthew Gordon", "Rory McIlroy");
             picks.Rows.Add("Matthew Gordon", "Tiger Woods");
-            picks.Rows.Add("Ron Mark", "Aaron Baddeley");
-            picks.Rows.Add("Ron Mark", "Adam Scott");
-            picks.Rows.Add("Ron Mark", "Jason Day");
-            picks.Rows.Add("Ron Mark", "Pat Perez");
-            picks.Rows.Add("Ron Mark", "Ryan Palmer");
-            picks.Rows.Add("Ron Mark", "Ryo Ishikawa");
-            picks.Rows.Add("Ron Mark", "Sunghoon Kang");
-            picks.Rows.Add("Ron Mark", "Tiger Woods");
-            picks.Rows.Add("Ron Mark", "Trevor Immelman");
-            picks.Rows.Add("Ron Mark", "Y.E. Yang");
+            
+            
+            
             picks.Rows.Add("UK Rules Golf", "Brian Davis");
             picks.Rows.Add("UK Rules Golf", "Darren Clarke");
             picks.Rows.Add("UK Rules Golf", "Graeme McDowell");
@@ -372,7 +366,7 @@ namespace GolfPool_Service
             picks.Rows.Add("Karlene 2", "Charles Howell III");
             picks.Rows.Add("Karlene 2", "Justin Leonard");
             picks.Rows.Add("Karlene 2", "Justin Rose");
-            picks.Rows.Add("Karlene 2", "Kevan Na");
+            picks.Rows.Add("Karlene 2", "Kevin Na");
             picks.Rows.Add("Karlene 2", "Robert Karlsson");
             picks.Rows.Add("Karlene 2", "Tiger Woods");
             picks.Rows.Add("Phil Curtis", "Anthony Kim");
@@ -860,7 +854,7 @@ namespace GolfPool_Service
             picks.Rows.Add("Team June", "Chris Couch");
             picks.Rows.Add("Team June", "Dustin Johnson");
             picks.Rows.Add("Team June", "Graeme McDowell");
-            picks.Rows.Add("Team June", "Harrison Fraser");
+            picks.Rows.Add("Team June", "Harrison Frazar");
             picks.Rows.Add("Team June", "Jim Furyk");
             picks.Rows.Add("Team June", "Rickie Fowler");
             picks.Rows.Add("Team June", "Ricky Barnes");

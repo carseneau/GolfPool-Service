@@ -64,7 +64,11 @@ namespace GolfPool_Service
             driver.Navigate().GoToUrl("http://www.pgatour.com/r/schedule/");
             foreach (IWebElement e in driver.FindElements(By.ClassName("tourSchArrowFront")))
             {
-                dt.Rows.Add(e.Text,e.GetAttribute("href") + "results.html");
+                string temp = e.GetAttribute("href");
+                if (e.GetAttribute("href").Substring(e.GetAttribute("href").Length - 5, 1) == "r")
+                {
+                    dt.Rows.Add(e.Text, e.GetAttribute("href") + "results.html");
+                }
             }
             return dt;
         }
@@ -82,6 +86,39 @@ namespace GolfPool_Service
             {
             }
         }
-      
+        public void InitialGolferAddToDB()
+        {
+            DbHelper dbh = new DbHelper();
+            foreach (DataRow t in getListOfTournaments().Rows)
+            {
+                setTournamentURL(t["TournamentLink"].ToString());
+                foreach (DataRow g in getTournamentResults().Rows)
+                {
+                    dbh.saveGolfer(g["GolferName"].ToString());
+                }
+            }
+        }
+        public void InitialEntrantsAddToDB()
+        {
+            DbHelper dbh = new DbHelper();
+            PicksDB pdb = new PicksDB();
+            foreach (DataRow p in pdb.getPicks().Rows)
+            {
+                dbh.saveEntrant(p["Entrant"].ToString());
+            }
+        }
+        public void InitialPicksAddToDB()
+        {
+            DbHelper dbh = new DbHelper();
+            PicksDB pdb = new PicksDB();
+            foreach (DataRow p in pdb.getPicks().Rows)
+            {
+                if (dbh.savePicks(p["entrant"].ToString(), p["golfer"].ToString()) == 0)
+                {
+                    System.Console.WriteLine("Error");
+                }
+                    
+            }
+        }
     }
 }
